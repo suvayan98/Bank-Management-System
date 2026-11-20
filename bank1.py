@@ -2,6 +2,8 @@
 import mysql.connector as sql
 from prettytable import PrettyTable
 import random as r
+import os
+from dotenv import load_dotenv
 
 # all the functions
 def ramdom_no(y):
@@ -30,13 +32,16 @@ def ramdom_no(y):
 
 
 
-# function to create a connection to datebase
+#password
+load_dotenv()
+DBpass=os.environ.get("DB_password")
+manager_pass=os.environ.get("manager_password")
 
 
 # create a database to store data
 
 try:
-    a = sql.connect(host="localhost",user="root",passwd="Suvayan@2838")
+    a = sql.connect(host="localhost",user="root",passwd=DBpass)
     cur=a.cursor()
     a.autocommit = True
     cur.execute("CREATE DATABASE IF NOT EXISTS test3")
@@ -47,7 +52,7 @@ try:
     print("succ")
 
 except:
-    a = sql.connect(host="localhost",user="root",passwd="Suvayan@2838", database="test3" )
+    a = sql.connect(host="localhost",user="root",passwd=DBpass, database="test3" )
     cur=a.cursor()
     a.autocommit = True
 
@@ -449,7 +454,7 @@ while True:
 
         manager_password = input("\nEnter Manager Password: ")
 
-        if manager_password != "admin123":
+        if manager_password != manager_pass:
             print("\nIncorrect Manager Password !!! ❌")
             input("\nPress Enter to return to the main menu...")
             continue
@@ -985,5 +990,5 @@ while True:
 
 
     elif choice.lower() in ["5","exit","e"]:
-        print("\nThank you for using the Bank Management System. Have a great day! hi \U0001F600 \U0001F600 \U0001F600")
+        print("\nThank you for using the Bank Management System. Have a great day! \U0001F600 \U0001F600 \U0001F600")
         break
