@@ -985,5 +985,5 @@ while True:
 
 
     elif choice.lower() in ["5","exit","e"]:
-        print("\nThank you for using the Bank Management System. Have a great day! \U0001F600 \U0001F600 \U0001F600")
+        print("\nThank you for using the Bank Management System. Have a great day! hi \U0001F600 \U0001F600 \U0001F600")
         break
